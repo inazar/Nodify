@@ -28,15 +28,15 @@ class Resource extends singleton
     request options, ( err, response, body) ->
       status = parseInt response.statusCode
 
-      if status >= 300 then err = new Error "Status code #{status}" else err = null
+      if status >= 300 then err = new Error "#{body.errors}" else err = null
       unless err?
         process.nextTick ->
           body = body[slug] if slug isnt 'oauth'
           body = slug if method is "DELETE"
           callback err, body
       else
+        err.status = status
         process.nextTick ->
-          console.log body
           callback err
 
   get: (url, slug, callback) ->
