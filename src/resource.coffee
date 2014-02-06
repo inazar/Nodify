@@ -29,7 +29,7 @@ class Resource extends singleton
       status = parseInt response.statusCode
 
       if status >= 300
-        msg = ''
+        msg = "\n"
         for key, val of body.errors
           msg += """
 #{key}:
