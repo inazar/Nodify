@@ -28,7 +28,17 @@ class Resource extends singleton
     request options, ( err, response, body) ->
       status = parseInt response.statusCode
 
-      if status >= 300 then err = new Error "#{body.errors}" else err = null
+      if status >= 300
+        msg = ''
+        for key, val of body.errors
+          msg += """
+#{key}:
+\t#{val}
+
+"""
+        err = new Error msg
+      else err = null
+
       unless err?
         process.nextTick ->
           body = body[slug] if slug isnt 'oauth'
