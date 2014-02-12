@@ -3,10 +3,6 @@
   "name": "nodify-shopify",
   "description": "Shopify API client",
   "version": "0.1.2",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com:Shopfrogs/Nodify.git"
-  },
   "main": "./lib/main.js",
   "scripts": {
     "test": "cake test"
@@ -15,8 +11,8 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "request": "2.9.x"
-    ,"singleton":"*"
+    "request": "2.9.x",
+    "singleton":"*"
   },
   "devDependencies": {
     "mocha": "0.12.x",
